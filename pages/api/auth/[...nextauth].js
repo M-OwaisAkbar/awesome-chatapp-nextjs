@@ -11,8 +11,8 @@ const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        //process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
-        const server = "http://localhost:3000";
+
+        const server = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "https://awesome-chatapp-nextjs-38audethl-m-owaisakbar.vercel.app/";
         const res = await fetch(`${server}/api/login`, {
           method: 'POST',
           body: JSON.stringify(credentials),
@@ -33,7 +33,7 @@ const authOptions = {
     signUp: '/auth/signup'
   },
   callbacks: {
-    async jwt({ token, user}) {
+    async jwt({ token, user }) {
       return token
     }
   }
