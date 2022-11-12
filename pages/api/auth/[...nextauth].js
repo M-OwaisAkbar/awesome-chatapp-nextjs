@@ -11,7 +11,8 @@ const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        const server = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+        //process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : '';
+        const server = "http://localhost:3000";
         const res = await fetch(`${server}/api/login`, {
           method: 'POST',
           body: JSON.stringify(credentials),

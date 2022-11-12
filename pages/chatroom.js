@@ -44,9 +44,10 @@ export default function Home(props) {
       ]);
       scrollToBottom()
     });
-    socket.on("currentOnlineUsers", (onlineUsers) => {
+    socket.on("currentOnlineUsers", async (onlineUsers) => {
+      let { data } = await axios.get('/api/users')
       setUsers((prev) => {
-        let temp = prev.map(u => {
+        let temp = data.map(u => {
           u.online = onlineUsers.includes(u._id)
           return u
         })
