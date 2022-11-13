@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import NextAuth from 'next-auth'
-const authOptions = {
+export const authOptions = {
   secret: process.env.JWT_SECRET,
   providers: [
     CredentialsProvider({

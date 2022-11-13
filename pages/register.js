@@ -105,7 +105,7 @@ const Register = () => {
                   Register
                 </Button>
                 <br />
-                <Link href="/">login</Link>
+                <a href="/">back to home</a>
               </Form>
             </Col>
           </Row>

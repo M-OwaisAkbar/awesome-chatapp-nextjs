@@ -20,8 +20,12 @@ export default function Home(props) {
   const messagesEndRef = useRef(null);
 
   async function getMsgs() {
-    let { data } = await axios.get('/api/chat-msgs')
-    setMessages(data);
+    try {
+      let { data } = await axios.get('/api/chat-msgs')
+      setMessages(data);
+    } catch (error) {
+      console.log(error)
+    }
   }
   async function getUsers() {
     let { data } = await axios.get('/api/users')
@@ -32,7 +36,7 @@ export default function Home(props) {
   }
   const socketInitializer = async () => {
     // We just call it because we don't need anything else out of it
-    await fetch("/api/socketio/");
+    await fetch("/api/socketio");
     socket = io();
     if (session.data?.user) {
       socket.emit("connectToChat", { email: session.data?.user?.email })
@@ -97,14 +101,14 @@ export default function Home(props) {
     <div className={styles.container}>
       <Nav
         activeKey="/home"
-        className="justify-content-end" 
-       
+        className="justify-content-end"
+
       >
         <Nav.Item>
           <Nav.Link>LoggedIn as {currentUser?.email.split('@')[0]}@</Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link  onClick={(e)=>{logOut(e)}}>
+          <Nav.Link onClick={(e) => { logOut(e) }}>
             Logout
           </Nav.Link>
         </Nav.Item>
