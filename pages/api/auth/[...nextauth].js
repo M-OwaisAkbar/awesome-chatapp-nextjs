@@ -11,13 +11,11 @@ const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-
-        const server = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : "https://awesome-chatapp-nextjs-38audethl-m-owaisakbar.vercel.app/";
-        const res = await fetch(`${server}/api/login`, {
+        const res = await fetch(`${process.env.VERCEL_URL}/api/login`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" }
-        })
+        }) 
         const data = await res.json()
         if (res.ok && data?.user) {
           return data.user

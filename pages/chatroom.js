@@ -122,7 +122,7 @@ export default function Home(props) {
         <Col md={3} >
           <h5 className='text-center'>Users</h5>
           {users.map((u, i) => {
-            return <Card key={`${i}sender`} >
+            return <Card className={styles.m10} key={`${i}sender`} >
               <Card.Header key={`${i}xxy`}><FontAwesomeIcon className={u.online ? styles.oicon : styles.ficon} icon={faCircle} />{" "}{u.fullName} </Card.Header>
             </Card>
           })}

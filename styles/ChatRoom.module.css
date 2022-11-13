@@ -11,6 +11,9 @@
   overflow: auto !important;
   height: 23rem;
 }
+.m10{
+  margin: 10px;
+}
 .chatroom{
   margin-left: 5%;
   margin-right: 5%;
