@@ -11,7 +11,7 @@ const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials, req) {
-        const res = await fetch(`http://${process.env.VERCEL_URL}/api/login`, {
+        const res = await fetch(`http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/login`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { "Content-Type": "application/json" }
