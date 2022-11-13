@@ -32,7 +32,7 @@ export default function Home(props) {
   }
   const socketInitializer = async () => {
     // We just call it because we don't need anything else out of it
-    await fetch("/api/socketio");
+    await fetch(`http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/socketio`);
     socket = io();
     if (session.data?.user) {
       socket.emit("connectToChat", { email: session.data?.user?.email })
